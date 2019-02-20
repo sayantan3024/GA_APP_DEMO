@@ -1,30 +1,15 @@
 class Client < Darwinning::Organism
 	@name = "Plan_attributes"
 	@genes = [
-		Darwinning::Gene.new(name: "user_age", value_range: (1..4)),
-		Darwinning::Gene.new(name: "driving_exp", value_range: (1..4)),
-		Darwinning::Gene.new(name: "area", value_range: (1..4)),
-		Darwinning::Gene.new(name: "credit_score", value_range: (1..5))
+		Darwinning::Gene.new(name: "credit_score", value_range: (0..16)),
+		Darwinning::Gene.new(name: "driving_history", value_range: (3..9)),
+		Darwinning::Gene.new(name: "driving_area", value_range: (3..9))
 	]
 
 	def fitness		
 		(genotypes.values.inject { |sum, x| sum + x } - 8).abs #case2
 	end
 end
-
-
-# User age = 32   		>> 2% >> 2
-# Driving exp = 7 		>> 3% >> 2
-# Area = City    		>> 2% >> 2
-# Cerdit score = 420	>> 1% >> 3
-# Car  = Yaris          >> Mid
-
-
-# User age = 28   		>> 2% >> 2
-# Driving exp = 15 		>> 2% >> 4
-# Area = Offroad    	>> 3% >> 1
-# Cerdit score = 800	>> 1% >> 1
-# Car  = Yaris          >> Mid
 
 
 # Client_attr_population = Darwinning::Population.new(
